@@ -17,8 +17,8 @@ class Content(db.Model):
     Wallpaper_compatibility = db.Column(db.String(1000),nullable=False)
 
     
-# db.init_app(app)
-# db.create_all()
+db.init_app(app)
+db.create_all()
 
 @app.route('/',methods = ['GET','POST'])
 def home():
