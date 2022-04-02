@@ -136,6 +136,7 @@
   </header>
   <hr />
   <!--WALLPAPER SECTION STARTS-->
+  {% for image in all_image[::-1] %}
   <section class="text-gray-400 bg-gray-900 body-font">
     <div class="container px-5 py-24 mx-auto">
       <div class="flex flex-wrap -m-4">
@@ -167,6 +168,7 @@
       </div>
     </div>
   </section>
+  {% endfor %}
   <!--WALLPAPER SECTION ENDS-->
   <!-- SUGGESTION -->
   <section class="text-gray-400 bg-gray-900 body-font relative">
