@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin | Wall By Krish</title>
+</head>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+<style>
+    * {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    header {
+        background-color: rgba(128, 128, 128, 0.39);
+        padding: 14px;
+    }
+
+    .title {
+        text-align: center;
+        font-size: 30px;
+    }
+
+    .subtitle {
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .addData {
+        width: 50%;
+        margin: 20px auto;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    input[type="text"] {
+        font-size: 14px;
+    }
+    select option{
+        font-size: 14px;
+    }
+</style>
+
+<body>
+    <header>
+        <p class="title">Wall By Krish Admin Panel</p>
+    </header>
+    <main>
+        <section class="addData">
+            <form action="/admin" method="POST">
+                <div class="form-group">
+                    <label for="title" name="wallpaper Title" id ="wallpaper Title" >Wallpaper Title</label>
+                    <input type="text" class="form-control" name="wallpaper Title" id ="wallpaper Title" aria-describedby="title">
+                </div>
+                <div class="form-group">
+                    <label for="wallpaperType">Wallpaper Compatibility</label>
+                    <select class="form-control" name="Wallpaper Compatibility"  id="Wallpaper Compatibility">
+                        <option>Desktop/Mobile</option>
+                        <option>Mobile</option>
+                        <option>Desktop</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="thumbnailLink" name = "Wallpaper Thumbnail Link" id = "Wallpaper Thumbnail Link">Wallpaper Thumbnail Link</label>
+                    <input type="text" class="form-control" name = "Wallpaper Thumbnail Link" id = "Wallpaper Thumbnail Link">
+                </div>
+                <div class="form-group">
+                    <label for="wallpaperLink" name = "Wallpaper Link" id = "Wallpaper Link">Wallpaper Link</label>
+                    <input type="text" class="form-control" name = "Wallpaper Link" id = "Wallpaper Link">
+                </div>
+                <div class="form-group">
+                    <label for="wallDesc" name = "Wallpaper Description" id = "Wallpaper Description" >Wallpaper Description</label>
+                    <textarea class="form-control" name = "Wallpaper Description" id = "Wallpaper Description" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Upload Data</button>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>
