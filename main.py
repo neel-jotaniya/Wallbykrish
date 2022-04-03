@@ -1,12 +1,13 @@
 from flask import Flask, render_template,request,redirect
 from flask_sqlalchemy import SQLAlchemy
+import os
 
 
 app = Flask(__name__)#mysql://fkobrltakxhyef:7df23ed83fcd49d0b3d61296506a64684cdcb39a1e5f90fa91f3a4f51c0ff87a@server/db
 
 email = ['jotaniyaneel07@gmail.com','jotaniyakrish07@gmail.com']
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://fkobrltakxhyef:7df23ed83fcd49d0b3d61296506a64684cdcb39a1e5f90fa91f3a4f51c0ff87a@ec2-52-73-155-171.compute-1.amazonaws.com:5432/dcodrl73rb0c4k'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 
 db = SQLAlchemy(app)
 class Content(db.Model):
