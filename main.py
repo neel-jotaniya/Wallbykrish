@@ -95,7 +95,7 @@ def login():
     else :
         return render_template('login.html')
     
-@app.route('/downloadcount/<int:SNO>')
+@app.route('/downloadcount/<int:SNO>',methods = ['GET','POST'])
 def download_count(SNO):
     all_image = Content.query.filter_by(SNO=SNO).first()
     all_image.Download_count += 1
