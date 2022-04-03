@@ -1,15 +1,22 @@
 from flask import Flask, render_template,request,redirect
 from flask_sqlalchemy import SQLAlchemy
 import os
-global sequrity_code 
-sequrity_code = False
 
+
+global security_code
+security_code = True
 
 app = Flask(__name__)#mysql://fkobrltakxhyef:7df23ed83fcd49d0b3d61296506a64684cdcb39a1e5f90fa91f3a4f51c0ff87a@server/db
 
 email = ['jotaniyaneel07@gmail.com','jotaniyakrish07@gmail.com']
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("postgres", "postgresql")
+
+# sqlite:////tmp/test.db
+# os.environ.get('DATABASE_URL').replace("postgres", "postgresql")
+
+
+
 
 db = SQLAlchemy(app)
 class Content(db.Model):
@@ -34,8 +41,9 @@ db.create_all()
 @app.route('/',methods = ['GET','POST'])
 def home():
     all_image = Content.query.all()
+    
    
-    if sequrity_code and request.method == 'POST':
+    if security_code and request.method == 'POST':
         name = request.form.get('name')
         rating = request.form.get('rating')
         suggestion = request.form.get('message')
@@ -78,7 +86,8 @@ def login():
         id = request.form.get('uniqueid')
         password = request.form.get('inputpassword')
         if id in email and password == '101010':
-            sequrity_code = True
+            
+            security_code = True
             return render_template('admin.html')
         else :
             return render_template('login.html')
