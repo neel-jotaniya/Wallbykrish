@@ -6,7 +6,7 @@ import os
 global security_code
 security_code = True
 
-app = Flask(__name__)#mysql://fkobrltakxhyef:7df23ed83fcd49d0b3d61296506a64684cdcb39a1e5f90fa91f3a4f51c0ff87a@server/db
+app = Flask(__name__)
 
 email = ['jotaniyaneel07@gmail.com','jotaniyakrish07@gmail.com']
 
@@ -26,6 +26,7 @@ class Content(db.Model):
     Wallpaper_description = db.Column(db.String(1000),nullable=False)
     SNO = db.Column(db.Integer, primary_key=True,nullable=False)
     Wallpaper_compatibility = db.Column(db.String(1000),nullable=False)
+    Download_count = db.Column(db.Integer,default=0)
     
 class Feedback(db.Model):
     name = db.Column(db.String(1000),nullable=False)
@@ -93,6 +94,12 @@ def login():
             return render_template('login.html')
     else :
         return render_template('login.html')
+    
+@app.route('/downloadcount/<int:SNO>')
+def download_count(SNO):
+    all_image = Content.query.filter_by(SNO=SNO).first()
+    all_image.Download_count += 1
+#  todo = Content.query.filter_by(sno=sno).first()
     
 if __name__ == "__main__":
     app.run(debug=True)
