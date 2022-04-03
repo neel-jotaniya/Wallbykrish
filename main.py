@@ -26,7 +26,7 @@ class Content(db.Model):
     Wallpaper_description = db.Column(db.String(1000),nullable=False)
     SNO = db.Column(db.Integer, primary_key=True,nullable=False)
     Wallpaper_compatibility = db.Column(db.String(1000),nullable=False)
-    Download_count = db.Column(db.Integer,default=0)
+    
     
 class Feedback(db.Model):
     name = db.Column(db.String(1000),nullable=False)
@@ -95,11 +95,7 @@ def login():
     else :
         return render_template('login.html')
     
-@app.route('/downloadcount/<int:SNO>',methods = ['GET','POST'])
-def download_count(SNO):
-    all_image = Content.query.filter_by(SNO=SNO).first()
-    all_image.Download_count += 1
-    return redirect('/')
+
 #  todo = Content.query.filter_by(sno=sno).first()
     
 if __name__ == "__main__":
