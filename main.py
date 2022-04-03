@@ -1,20 +1,18 @@
+from pickle import FALSE
 from flask import Flask, render_template,request,redirect
 from flask_sqlalchemy import SQLAlchemy
 import os
-
-
-global security_code
-security_code = True
 
 app = Flask(__name__)
 
 email = ['jotaniyaneel07@gmail.com','jotaniyakrish07@gmail.com']
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("postgres", "postgresql")
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///test.db"
 
-# sqlite:////tmp/test.db
+# sqlite:////test.db
 # os.environ.get('DATABASE_URL').replace("postgres", "postgresql")
-
+global security_code
+security_code = False
 
 
 
@@ -44,7 +42,7 @@ def home():
     all_image = Content.query.all()
     
    
-    if security_code and request.method == 'POST':
+    if request.method == 'POST':
         name = request.form.get('name')
         rating = request.form.get('rating')
         suggestion = request.form.get('message')
@@ -60,7 +58,7 @@ def home():
 
 @app.route('/admin',methods = ['GET','POST'])
 def private_route():
-    if request.method == 'POST':      
+    if request.method == 'POST':   
         Wallpaper_title = request.form.get('wallpaper Title')
         Wallpaper_thumbnail_link = request.form.get('Wallpaper Thumbnail Link')
         Wallpaper_link = request.form.get('Wallpaper Link')
@@ -79,7 +77,9 @@ def private_route():
         
         return redirect('/')
     else:
-        return render_template('admin.html')
+        if security_code == True:
+            return render_template('admin.html')
+        return "Not autheticated"
     
 @app.route('/login',methods = ['GET','POST'])
 def login():
@@ -87,7 +87,7 @@ def login():
         id = request.form.get('uniqueid')
         password = request.form.get('inputpassword')
         if id in email and password == '101010':
-            
+            global security_code
             security_code = True
             return render_template('admin.html')
         else :
