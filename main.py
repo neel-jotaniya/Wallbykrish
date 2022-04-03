@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 email = ['jotaniyaneel07@gmail.com','jotaniyakrish07@gmail.com']
 
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///test.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("postgres", "postgresql")
 
 # sqlite:////test.db
 # os.environ.get('DATABASE_URL').replace("postgres", "postgresql")
@@ -98,8 +98,7 @@ def login():
 
 #  todo = Content.query.filter_by(sno=sno).first()
     
-if __name__ == "__main__":
-    app.run(debug=True)
+
         
 
 
