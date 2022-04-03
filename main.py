@@ -7,7 +7,7 @@ app = Flask(__name__)#mysql://fkobrltakxhyef:7df23ed83fcd49d0b3d61296506a64684cd
 
 email = ['jotaniyaneel07@gmail.com','jotaniyakrish07@gmail.com']
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("postgres", "postgresql")
 
 db = SQLAlchemy(app)
 class Content(db.Model):
