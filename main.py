@@ -99,6 +99,7 @@ def login():
 def download_count(SNO):
     all_image = Content.query.filter_by(SNO=SNO).first()
     all_image.Download_count += 1
+    return redirect('/')
 #  todo = Content.query.filter_by(sno=sno).first()
     
 if __name__ == "__main__":
