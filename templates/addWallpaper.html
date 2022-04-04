@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Wallpaper | Wall By Krish</title>
+  </head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous"
+  />
+  <style>
+    * {
+      font-family: "Poppins", sans-serif;
+    }
+
+    header {
+      background-color: rgba(128, 128, 128, 0.39);
+      padding: 20px;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 30px;
+    }
+
+    .addData {
+      width: 50%;
+      margin: 20px auto;
+    }
+
+    label {
+      font-size: 14px;
+    }
+
+    input[type="text"] {
+      font-size: 14px;
+    }
+    select option {
+      font-size: 14px;
+    }
+    @media only screen and (max-width: 650px) {
+      .addData {
+        width: 75%;
+      }
+      .title {
+        font-size: 22px;
+      }
+    }
+  </style>
+
+  <body>
+    <header>
+      <p class="title">Add Wallpaper To Server</p>
+    </header>
+    <main>
+      <section class="addData">
+        <form>
+          <div class="form-group">
+            <label for="title">Wallpaper Title</label>
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              aria-describedby="title"
+            />
+          </div>
+          <div class="form-group">
+            <label for="wallpaperType">Wallpaper Compatibility</label>
+            <select class="form-control" id="wallpaperType">
+              <option>Desktop/Mobile</option>
+              <option>Mobile</option>
+              <option>Desktop</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="thumbnailLink">Wallpaper Thumbnail Link</label>
+            <input type="text" class="form-control" id="thumbnailLink" />
+          </div>
+          <div class="form-group">
+            <label for="wallpaperLink">Wallpaper Link</label>
+            <input type="text" class="form-control" id="wallpaperLink" />
+          </div>
+          <div class="form-group">
+            <label for="wallDesc">Wallpaper Description</label>
+            <textarea class="form-control" id="wallDesc" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Upload Data</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

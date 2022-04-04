@@ -1,4 +1,3 @@
-from pickle import FALSE
 from flask import Flask, render_template,request,redirect
 from flask_sqlalchemy import SQLAlchemy
 import os
@@ -13,7 +12,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("
 # os.environ.get('DATABASE_URL').replace("postgres", "postgresql")
 global security_code
 security_code = False
-
 
 
 db = SQLAlchemy(app)
@@ -56,7 +54,7 @@ def home():
              
     return render_template('index.html', all_image = all_image)
 
-@app.route('/admin',methods = ['GET','POST'])
+@app.route('/add',methods = ['GET','POST'])
 def private_route():
     if request.method == 'POST':   
         Wallpaper_title = request.form.get('wallpaper Title')
@@ -75,10 +73,10 @@ def private_route():
         db.session.add(entry)
         db.session.commit()
         
-        return redirect('/')
+        return redirect('/add')
     else:
         if security_code == True:
-            return render_template('admin.html')
+            return render_template('add.html')
         return "Not autheticated"
     
 @app.route('/login',methods = ['GET','POST'])
@@ -96,10 +94,8 @@ def login():
         return render_template('login.html')
     
 
-#  todo = Content.query.filter_by(sno=sno).first()
-    
 
-        
+
 
 
 

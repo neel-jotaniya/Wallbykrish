@@ -1,90 +1,102 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin | Wall By Krish</title>
-</head>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
-<style>
-    * {
-        font-family: 'Poppins', sans-serif;
+    <title>WallByKrish | Admin Panel</title>
+  </head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+  />
+  <style>
+    body {
+      background-color: rgba(128, 128, 128, 0.582);
     }
-
-    header {
-        background-color: rgba(128, 128, 128, 0.39);
-        padding: 14px;
+    .login {
+      width: 30%;
+      margin: 150px auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 6px;
+      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.176);
     }
-
-    .title {
-        text-align: center;
-        font-size: 30px;
+    input {
+      margin: 15px 0px;
     }
-
-    .subtitle {
-        text-align: center;
-        font-size: 16px;
-    }
-
-    .addData {
-        width: 50%;
-        margin: 20px auto;
-    }
-
-    label {
-        font-size: 14px;
-    }
-
     input[type="text"] {
-        font-size: 14px;
+      font-size: 18px;
     }
-    select option{
-        font-size: 14px;
+    .buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
     }
-</style>
+    .button {
+      background-color: #173753;
+      color: white;
+      border: 1.5px solid #173753;
+      border-radius: 2px;
+      padding: 5px 10px;
+      width: 70%;
+      margin: 4px;
+    }
+    .button:hover {
+      background-color: white;
+      color: #173753;
+      border-top: 1.5px solid #173753;
+      border-bottom: 1.5px solid #173753;
+      border-left: none;
+      border-right: none;
+    }
+    .btnDiv {
+      display: flex;
+      justify-content: center;
+    }
+    .title {
+      font-size: 20px;
+      text-align: center;
+      border-bottom: 1.3px solid rgba(0, 0, 0, 0.365);
+      margin: 5px;
+      padding: 10px;
+      margin-bottom: 15px;
+    }
+    @media only screen and (max-width: 650px) {
+      .login {
+        width: 80%;
+      }
+    }
+  </style>
+  <body>
+    <section class="login">
+      <p class="title">WallByKrish Admin</p>
+      <div class="buttons">
+        <button class="button" onclick="location.href = '/add';">
+          Add Wallpaper
+        </button>
+        <button
+          class="button"
+          onclick="location.href = 'deleteWallpaper.html';"
+        >
+          Remove Wallpaper
+        </button>
+        <button class="button" onclick="window.location.href='https://analytics.google.com/analytics/web/#/p309506002/reports/intelligenthome';">Analytics</button>
 
-<body>
-    <header>
-        <p class="title">Wall By Krish Admin Panel</p>
-    </header>
-    <main>
-        <section class="addData">
-            <form action="/admin" method="POST">
-                <div class="form-group">
-                    <label for="title" name="wallpaper Title" id ="wallpaper Title" >Wallpaper Title</label>
-                    <input type="text" class="form-control" name="wallpaper Title" id ="wallpaper Title" aria-describedby="title">
-                </div>
-                <div class="form-group">
-                    <label for="wallpaperType">Wallpaper Compatibility</label>
-                    <select class="form-control" name="Wallpaper Compatibility"  id="Wallpaper Compatibility">
-                        <option>Desktop/Mobile</option>
-                        <option>Mobile</option>
-                        <option>Desktop</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="thumbnailLink" name = "Wallpaper Thumbnail Link" id = "Wallpaper Thumbnail Link">Wallpaper Thumbnail Link</label>
-                    <input type="text" class="form-control" name = "Wallpaper Thumbnail Link" id = "Wallpaper Thumbnail Link">
-                </div>
-                <div class="form-group">
-                    <label for="wallpaperLink" name = "Wallpaper Link" id = "Wallpaper Link">Wallpaper Link</label>
-                    <input type="text" class="form-control" name = "Wallpaper Link" id = "Wallpaper Link">
-                </div>
-                <div class="form-group">
-                    <label for="wallDesc" name = "Wallpaper Description" id = "Wallpaper Description" >Wallpaper Description</label>
-                    <textarea class="form-control" name = "Wallpaper Description" id = "Wallpaper Description" rows="3"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Upload Data</button>
-            </form>
-        </section>
-    </main>
-</body>
-
+        <button
+          class="button"
+          onclick="location.href = 'suggestionEntry.html';"
+        >
+          Feedbacks
+        </button>
+      </div>
+    </section>
+  </body>
 </html>
