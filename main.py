@@ -92,12 +92,14 @@ def login():
             return render_template('login.html')
     else :
         return render_template('login.html')
-@app.route('/admin' ,methods = ['GET','POST'])
-def admin():
-    if security_code == True:
-            return render_template('admin.html')
-    else :
-        return "Not autheticated"
+    
+    
+# @app.route('/admin' ,methods = ['GET','POST'])
+# def admin():
+#     if security_code == True:
+#         return render_template('admin.html')
+#     else :
+#         return "Not autheticated"
     
 
 
