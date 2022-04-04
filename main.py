@@ -73,7 +73,7 @@ def private_route():
         db.session.add(entry)
         db.session.commit()
         
-        return redirect('/add')
+        return render_template('addWallpaper.html')
     else:
         
         return render_template('addWallpaper.html')
@@ -99,7 +99,7 @@ def login():
 #     if security_code == True:
 #         return render_template('admin.html')
 #     else :
-#         return "Not autheticated"
+#         return "Not autheticated"``
     
 
 
