@@ -46,7 +46,7 @@ def home():
         db.session.add(feedback_form)
         db.session.commit()
 
-        return render_template('index.html', all_image = all_image)
+        
 
 
              
@@ -55,12 +55,11 @@ def home():
 @app.route('/add',methods = ['GET','POST'])
 def private_route():
     if request.method == 'POST':   
-        Wallpaper_title = request.form.get('wallpaper Title')
-        Wallpaper_thumbnail_link = request.form.get('Wallpaper Thumbnail Link')
-        Wallpaper_link = request.form.get('Wallpaper Link')
-        Wallpaper_description = request.form.get('Wallpaper Description')
-        Wallpaper_compatibility = request.form.get('Wallpaper Compatibility')
-        # print(Wallpaper_compatibility)
+        Wallpaper_title = request.form.get('title')
+        Wallpaper_thumbnail_link = request.form.get('thumbnailLink')
+        Wallpaper_link = request.form.get('wallpaperLink')
+        Wallpaper_description = request.form.get('wallDesc')
+        Wallpaper_compatibility = request.form.get('wallpaperType')
         entry = Content(Wallpaper_description = Wallpaper_description,
                         Wallpaper_link = Wallpaper_link,
                         Wallpaper_title = Wallpaper_title,
@@ -90,8 +89,7 @@ def login():
             global security_code
             security_code = True
             return render_template('admin.html')
-        else :
-            return render_template('login.html')
+      
     else :
         return render_template('login.html')
     
@@ -104,9 +102,31 @@ def admin():
         return "Not autheticated"
     
 
+@app.route('/delete/<int:SNO>' )
+def delete(SNO):  
+    todo = Content.query.filter_by(SNO=SNO).first()
+    db.session.delete(todo)
+    db.session.commit()
+    return redirect("/delete")
+
+@app.route('/delete' ,methods = ['GET','POST'])
+def delete_page():
+    all_image = Content.query.all()
+    if security_code:       
+        return render_template('deleteWallpaper.html', all_image = all_image)
+    else:
+        return "Not autheticated"
+    
+
+@app.route('/feedback')
+def feedback_form():
+    all_feedback = Feedback.query.all()
+    if security_code:
+        return render_template('suggestionEntry.html',all_feedback = all_feedback)
+    else :
+        return "Not autheticated"
 
 
-# app.run()
 
 
     

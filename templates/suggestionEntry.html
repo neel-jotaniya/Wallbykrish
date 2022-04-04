@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Suggestions | Wall By Krish</title>
+  </head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous"
+  />
+  <style>
+    * {
+      font-family: "Poppins", sans-serif;
+    }
+
+    header {
+      background-color: rgba(128, 128, 128, 0.39);
+      padding: 20px;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 30px;
+    }
+  </style>
+
+  <body>
+    <header>
+      <p class="title">Suggestion | WallByKrish</p>
+    </header>
+    <main>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Feedback</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for feedback in all_feedback %}
+              <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{feedback.name}}</td>
+                <td>{{feedback.rating}}</td>
+                <td>{{feedback.suggestion}}</td>              
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </main>
+  </body>
+</html>

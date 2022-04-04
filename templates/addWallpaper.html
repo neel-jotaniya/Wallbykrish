@@ -64,19 +64,20 @@
     </header>
     <main>
       <section class="addData">
-        <form>
+        <form action="/add" method="POST">
           <div class="form-group">
             <label for="title">Wallpaper Title</label>
             <input
               type="text"
               class="form-control"
               id="title"
+              name = "title"
               aria-describedby="title"
             />
           </div>
           <div class="form-group">
             <label for="wallpaperType">Wallpaper Compatibility</label>
-            <select class="form-control" id="wallpaperType">
+            <select class="form-control" id="wallpaperType" name = "wallpaperType">
               <option>Desktop/Mobile</option>
               <option>Mobile</option>
               <option>Desktop</option>
@@ -84,15 +85,15 @@
           </div>
           <div class="form-group">
             <label for="thumbnailLink">Wallpaper Thumbnail Link</label>
-            <input type="text" class="form-control" id="thumbnailLink" />
+            <input type="text" class="form-control" id="thumbnailLink"  name="thumbnailLink"/>
           </div>
           <div class="form-group">
             <label for="wallpaperLink">Wallpaper Link</label>
-            <input type="text" class="form-control" id="wallpaperLink" />
+            <input type="text" class="form-control" id="wallpaperLink" name = "wallpaperLink" />
           </div>
           <div class="form-group">
             <label for="wallDesc">Wallpaper Description</label>
-            <textarea class="form-control" id="wallDesc" rows="3"></textarea>
+            <textarea class="form-control" id="wallDesc" name="wallDesc" rows="3"></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Upload Data</button>
         </form>
