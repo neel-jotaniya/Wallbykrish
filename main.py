@@ -37,9 +37,7 @@ db.create_all()
 
 @app.route('/',methods = ['GET','POST'])
 def home():
-    all_image = Content.query.all()
-    
-   
+    all_image = Content.query.all()  
     if request.method == 'POST':
         name = request.form.get('name')
         rating = request.form.get('rating')
@@ -76,7 +74,11 @@ def private_route():
         return render_template('addWallpaper.html')
     else:
         
-        return render_template('addWallpaper.html')
+        if security_code == True:
+            return render_template('addWallpaper.html')
+        else :
+            return "Not autheticated"
+        
         
     
 @app.route('/login',methods = ['GET','POST'])
@@ -94,17 +96,17 @@ def login():
         return render_template('login.html')
     
     
-# @app.route('/admin' ,methods = ['GET','POST'])
-# def admin():
-#     if security_code == True:
-#         return render_template('admin.html')
-#     else :
-#         return "Not autheticated"``
+@app.route('/admin' ,methods = ['GET','POST'])
+def admin():
+    if security_code == True:
+        return render_template('admin.html')
+    else :
+        return "Not autheticated"
     
 
 
 
-
+# app.run()
 
 
     
