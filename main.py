@@ -75,9 +75,9 @@ def private_route():
         
         return redirect('/add')
     else:
-        if security_code == True:
-            return render_template('addWallpaper.html')
-        return "Not autheticated"
+        
+        return render_template('addWallpaper.html')
+        
     
 @app.route('/login',methods = ['GET','POST'])
 def login():
@@ -92,6 +92,12 @@ def login():
             return render_template('login.html')
     else :
         return render_template('login.html')
+@app.route('/admin' ,methods = ['GET','POST'])
+def admin():
+    if security_code == True:
+            return render_template('admin.html')
+    else :
+        return "Not autheticated"
     
 
 
