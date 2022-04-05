@@ -3,9 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 
 app = Flask(__name__)
-
 email = ['jotaniyaneel07@gmail.com','jotaniyakrish07@gmail.com']
-
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("postgres", "postgresql")
 
 # sqlite:////test.db
@@ -45,10 +43,6 @@ def home():
         feedback_form = Feedback(name = name,rating = rating,suggestion = suggestion)
         db.session.add(feedback_form)
         db.session.commit()
-
-        
-
-
              
     return render_template('index.html', all_image = all_image)
 
