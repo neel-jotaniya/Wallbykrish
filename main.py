@@ -1,10 +1,11 @@
-from flask import Flask, render_template,request,redirect
+from flask import Flask, render_template,request,redirect,session
 from flask_sqlalchemy import SQLAlchemy
 import os
 
 app = Flask(__name__)
+app.secret_key = 'super-thunder'
 email = ['jotaniyaneel07@gmail.com','jotaniyakrish07@gmail.com']
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("postgres", "postgresql")
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///test.db"
 
 # sqlite:////test.db
 # os.environ.get('DATABASE_URL').replace("postgres", "postgresql")
@@ -67,7 +68,7 @@ def private_route():
         return render_template('addWallpaper.html')
     else:
         
-        if security_code == True:
+        if "user" in session and session['user'] in email:
             return render_template('addWallpaper.html')
         else :
             return "Not autheticated"
@@ -80,8 +81,7 @@ def login():
         id = request.form.get('uniqueid')
         password = request.form.get('inputpassword')
         if id in email and password == '101010':
-            global security_code
-            security_code = True
+            session['user']= id
             return render_template('admin.html')
       
     else :
@@ -90,7 +90,7 @@ def login():
     
 @app.route('/admin' ,methods = ['GET','POST'])
 def admin():
-    if security_code == True:
+    if "user" in session and session['user'] in email:
         return render_template('admin.html')
     else :
         return "Not autheticated"
@@ -106,7 +106,7 @@ def delete(SNO):
 @app.route('/delete' ,methods = ['GET','POST'])
 def delete_page():
     all_image = Content.query.all()
-    if security_code:       
+    if "user" in session and session['user'] in email:
         return render_template('deleteWallpaper.html', all_image = all_image)
     else:
         return "Not autheticated"
@@ -115,7 +115,7 @@ def delete_page():
 @app.route('/feedback')
 def feedback_form():
     all_feedback = Feedback.query.all()
-    if security_code:
+    if "user" in session and session['user'] in email:
         return render_template('suggestionEntry.html',all_feedback = all_feedback)
     else :
         return "Not autheticated"
@@ -123,5 +123,5 @@ def feedback_form():
 
 
 
-    
+
 
