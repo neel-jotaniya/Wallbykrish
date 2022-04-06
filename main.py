@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 app.secret_key = 'super-thunder'
 email = ['jotaniyaneel07@gmail.com','jotaniyakrish07@gmail.com']
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///test.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("postgres", "postgresql")
 
 # sqlite:////test.db
 # os.environ.get('DATABASE_URL').replace("postgres", "postgresql")
