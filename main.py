@@ -7,7 +7,7 @@ app.secret_key = 'super-thunder'
 email = ['jotaniyaneel07@gmail.com','jotaniyakrish07@gmail.com']
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("postgres", "postgresql")
 
-# sqlite:////test.db
+# sqlite:///test.db
 # os.environ.get('DATABASE_URL').replace("postgres", "postgresql")
 global security_code
 security_code = False
